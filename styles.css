@@ -2,51 +2,60 @@
 body, html {
     margin: 0;
     padding: 0;
-    overflow: hidden; /* Disable manual scrolling */
+    height: 100%;
+    overflow: hidden; 
   }
   
   body {
-    background-color: black;
-    color: white;
-    font-family: 'Impact', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* Full viewport height */
-  }
-  
-  .text-container {
-    position: relative;
-    overflow: hidden; /* Hide content outside the viewport */
-    height: 100vh; /* Full viewport height */
-    width: 100vw; /* Full viewport width */
-  }
-  
-  .text-wall {
-    position: absolute;
-    width: 100%; /* Ensure full width */
-    height: 200%; /* Ensure enough height for continuous scrolling */
-    animation: scrollUp 10s linear infinite; /* Infinite scrolling */
-    font-size: 5vw;
-    line-height: 1; /* Make the lines tightly packed */
-    word-spacing: 0.2em; /* Add slight space between words for readability */
+    font-family: 'VT323', monospace; 
+    color: #33ff33; 
     text-align: center;
+    background: black;
   }
   
-  .text-wall:nth-child(1) {
-    top: 0; /* First block starts at the top */
+  .text-overlay {
+    position: absolute;
+    font-size: 2.5vw; 
+    z-index: 2; 
+    background: rgba(0, 0, 0, 0.8); 
+    padding: 20px;
+    border-radius: 10px;
+    white-space: pre-wrap; 
+    overflow: hidden;
   }
   
-  .text-wall:nth-child(2) {
-    top: 100%; /* Second block starts just below the first */
+  #ascii-art {
+    font-size: 1.0vw; 
+    margin-top: 20px; 
   }
   
-  @keyframes scrollUp {
-    0% {
-      transform: translateY(0); /* Start in current position */
+  /* Spiral background */
+  body::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: url('https://thumbs.dreamstime.com/b/spiral-hypnosis-design-pattern-stress-black-white-descending-spiral-design-pattern-black-background-concept-hypnosis-188681622.jpg') no-repeat center center;
+    background-size: cover;
+    transform: translate(-100%, -100%);
+    animation: spin 15s linear infinite; 
+    z-index: 1;
+    border-radius: 50%; 
+    filter: brightness(75%); 
+  }
+  
+  /* Spin animation */
+  @keyframes spin {
+    from {
+      transform: translate(-50%, -50%) rotate(0deg);
     }
-    100% {
-      transform: translateY(-100%); /* Move up by one full container height */
+    to {
+      transform: translate(-50%, -50%) rotate(360deg);
     }
   }
   
