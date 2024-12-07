@@ -1,0 +1,52 @@
+/* General reset */
+body, html {
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Disable manual scrolling */
+  }
+  
+  body {
+    background-color: black;
+    color: white;
+    font-family: 'Impact', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+  }
+  
+  .text-container {
+    position: relative;
+    overflow: hidden; /* Hide content outside the viewport */
+    height: 100vh; /* Full viewport height */
+    width: 100vw; /* Full viewport width */
+  }
+  
+  .text-wall {
+    position: absolute;
+    width: 100%; /* Ensure full width */
+    height: 200%; /* Ensure enough height for continuous scrolling */
+    animation: scrollUp 10s linear infinite; /* Infinite scrolling */
+    font-size: 5vw;
+    line-height: 1; /* Make the lines tightly packed */
+    word-spacing: 0.2em; /* Add slight space between words for readability */
+    text-align: center;
+  }
+  
+  .text-wall:nth-child(1) {
+    top: 0; /* First block starts at the top */
+  }
+  
+  .text-wall:nth-child(2) {
+    top: 100%; /* Second block starts just below the first */
+  }
+  
+  @keyframes scrollUp {
+    0% {
+      transform: translateY(0); /* Start in current position */
+    }
+    100% {
+      transform: translateY(-100%); /* Move up by one full container height */
+    }
+  }
+  
